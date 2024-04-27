@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'org.springframework.boot' version '3.2.5'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'org.alsaadii98'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/alsaadii98/hello-lib")
+        credentials {
+            username = "alsaadii98"
+            password = "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"
+        }
+    }
+}
+
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/alsaadii98/hello-lib")
+            credentials {
+                username = "alsaadii98"
+                password = "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"
+            }
+        }
+    }
+}
