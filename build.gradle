@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'org.alsaadii98'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.3'
 
 java {
     sourceCompatibility = '17'
@@ -24,20 +24,40 @@ repositories {
     }
 }
 
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+// Task to create a JAR file including dependencies
+tasks.register('packageLib', Jar) {
+    from sourceSets.main.output
+    from configurations.runtimeClasspath
+    archiveClassifier.set('lib') // Appending 'lib' to the JAR name to differentiate from application JAR
+}
+
 publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
     repositories {
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/alsaadii98/hello-lib")
             credentials {
                 username = "alsaadii98"
-                password = "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"
+                password = "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"
             }
         }
     }
