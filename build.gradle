@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'org.alsaadii98'
-version = '0.0.3'
+version = '0.0.5'
 
 java {
     sourceCompatibility = '17'
@@ -19,7 +19,7 @@ repositories {
         url = uri("https://maven.pkg.github.com/alsaadii98/hello-lib")
         credentials {
             username = "alsaadii98"
-            password = "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"
+            password = "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"
         }
     }
 }
@@ -57,7 +57,7 @@ publishing {
             url = uri("https://maven.pkg.github.com/alsaadii98/hello-lib")
             credentials {
                 username = "alsaadii98"
-                password = "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"
+                password = "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"
             }
         }
     }
